@@ -4,5 +4,9 @@ items:
 - title: 7 petites histoires de noesya
   target: "/7-petites-histoires-de-noesya/"
   kind: page
-  children: []
+  children:
+  - title: John & la chouette venue du froid
+    target: "/7-petites-histoires-de-noesya/john-et-la-chouette-venue-du-froid/"
+    kind: page
+    children: []
 
