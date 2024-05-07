@@ -1,4 +1,8 @@
 ---
 title: Menu principal
-items: []
+items:
+- title: 7 petites histoires de noesya
+  target: "/7-petites-histoires-de-noesya/"
+  kind: page
+  children: []
 
