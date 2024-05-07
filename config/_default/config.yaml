@@ -1,8 +1,10 @@
-theme: osuny-hugo-theme-aaa
+theme: noesya-hugo-theme
 paginate: 18
 enableRobotsTXT: true
 removePathAccents: true
 params:
+  logo:
+    header: "/assets/images/logo.svg"
   summary:
     position: hero
   search:
