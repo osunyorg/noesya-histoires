@@ -36,7 +36,7 @@ void main() {
     float _angle = 2.3;
     float n = 0.3;
     st *= u_resolution/u_resolution.y;
-    float df = 0.00001*u_time;
+    float df = 1.0; 
     st.x += df*2.0;
     st.y -= df*3.0;
     st = mat2(cos(df+_angle),-sin(df+_angle),
