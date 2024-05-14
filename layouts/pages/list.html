@@ -1,10 +1,10 @@
 {{ define "main" }}
   {{ partial "pages/hero.html" . }}
-  {{if eq .Params.bodyclass "page-menu-histoires" }}
-    {{ partial "menu-histoires.html" . }}
-  {{else}}
-    {{ partial "hooks/after-page-hero.html" . }}
-    <div class="document-content">
+  {{ partial "hooks/after-page-hero.html" . }}
+  <div class="document-content">
+    {{if eq .Params.bodyclass "page-menu-histoires" }}
+      {{ partial "menu-histoires.html" . }}
+    {{else}}
       {{ partial "toc/container.html" (dict
       "toc" "pages/toc.html"
       "context" .
@@ -20,6 +20,6 @@
       {{ else }}
         {{ partial "pages/children.html" . }}
       {{ end }}
-    </div>
-  {{end}}
+    {{end}}
+  </div>
 {{ end }}
