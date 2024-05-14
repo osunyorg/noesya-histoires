@@ -47,13 +47,13 @@ void main() {
     grid.y += 0.1*random2(vec2(f.x)).y;
     grid = fract(grid);
     vec3 c = vec3(0.0);
-    c+= vec3(grid.y, grid.y,grid.y);
+    c+= vec3(0.5);
     grid = vec2(0.5)-grid;
-    float r = 0.5;
+    float r = 0.4;
     vec2 rand = random2(random2(vec2(f.y)) * random2(vec2(f.x)));
     float yn = step(1.-n/2., rand.x);
     float d = length(grid)*3.0;
-    r = (r*(rand.y))*yn;
+    r = (r*(0.1+sin(rand.y*u_time*0.0005)))*yn;
     c *= 1.-smoothstep(r-2.0*z/(u_resolution.x), r, d/2.0);
     gl_FragColor = vec4(c, 1.0);
 }
