@@ -1,3 +1,9 @@
+window.onload = function() {
+    const titres = document.querySelector('.menu-histoires').innerText;
+    const pagesURL = document.querySelectorAll('.menu-histoires');
+    console.log(titres);
+    console.log(pagesURL); // Pour voir les éléments récupérés
+};
 
 var canvas = document.querySelector("#chouettecanvas");
 const ctx = canvas.getContext('2d');
@@ -5,16 +11,19 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+
+
+
 // Positions en pourcentage par rapport à la taille actuelle du canvas
 const positions = [
     { x: 53, y: 18 },
-    { x: 58, y: 35 },
+  /*  { x: 58, y: 35 },
     { x: 47, y: 33 },
     { x: 59, y: 55 },
     { x: 52, y: 68 },
     { x: 45, y: 83 },
     { x: 40, y: 58 },
-    { x: 0, y: 0 }
+    { x: 0, y: 0 } */
 ];
 
 //Créer limites de la constellation
@@ -65,7 +74,7 @@ class Particle {
         ctx.fillStyle = this.isHovered ? '#FFD700' : '#FFF';
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
-    
+
     }
 
     resetConnections() {
@@ -75,7 +84,7 @@ class Particle {
 
 const initParticles = () => {
     ParticleArray = [];
-    positions.forEach(pos => {
+        positions.forEach(pos => {
         const absoluteX = canvas.width * (pos.x / 100);
         const absoluteY = canvas.height * (pos.y / 100);
         ParticleArray.push(new Particle(absoluteX, absoluteY));
