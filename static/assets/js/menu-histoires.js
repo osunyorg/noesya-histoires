@@ -1,33 +1,73 @@
-var canvas = document.querySelector(".glcanvas");
-
+var menu = document.querySelector(".menu-histoires");
 var startTime, elapsed;
-if (canvas) {
-    var path = '/assets/glsl/etoiles.glsl.js';
-    try{
-      import(path).then((e)=>{
-        setup(e.vertex, e.fragment,canvas);
-      });
-    } catch(err){
-      console.log(err.message);
-    }
+
+if (menu) { 
+  setup(menu);
 }
 
-function setup(v,f, canvas) {
-  //context WebGL
-  var gl = canvas.getContext("webgl");
-  //Verifie si WebGL est supporté
-  if (gl === null) {
-    alert(
-      "Unable to initialize WebGL. Your browser or machine may not support it."
-    );
+function setup (menu) {
+  var canvas = menu.querySelector(".glcanvas");
+  if (canvas) {
+    var gl = canvas.getContext("webgl");
+    if (gl === null) {
+      alert( "Unable to initialize WebGL. Your browser or machine may not support it." );
+      return;
+    }
+    var path = '/assets/glsl/etoiles.glsl.js';
+    try{
+      import(path).then((e)=> { 
+        var programInfo = initWebGl(gl, e);
+        if(programInfo) {
+          start(menu, programInfo);
+        } else {
+          console.log("Probleme chargement shader");
+        }
+      });
+    } catch(err) {
+      console.log(err.message);
+    }
+  }
+  else {
     return;
   }
-  // Initialize a shader program; this is where all the lighting
-  // for the vertices and so forth is established.
-  var shaderProgram = initShaderProgram(gl, v, f);
-  // Collect all the info needed to use the shader program.
-  // Look up which attribute our shader program is using
-  // for aVertexPosition and look up uniform locations.
+}
+
+function start(menu, programInfo) {
+  startTime = Date.now();
+  draw(menu, programInfo);
+  setInterval(() => {
+    draw(menu, programInfo);    
+  }, 10);
+}
+
+
+
+function draw(menu, programInfo) {
+  var gl = menu.querySelector(".glcanvas").getContext("webgl");
+  drawGlCanvas(gl, programInfo);
+  elapsed = Date.now() - startTime;
+
+}
+
+
+function initWebGl(gl, e) {
+  var vertexShader = loadShader(gl, gl.VERTEX_SHADER, e.vertex);
+  var fragmentShader = loadShader(gl, gl.FRAGMENT_SHADER, e.fragment);
+
+  var shaderProgram = gl.createProgram();
+  gl.attachShader(shaderProgram, vertexShader);
+  gl.attachShader(shaderProgram, fragmentShader);
+  gl.linkProgram(shaderProgram);
+
+  if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
+    alert(
+      `Unable to initialize the shader program: ${gl.getProgramInfoLog(
+        shaderProgram
+      )}`
+    );
+    return null;
+  }
+
   var programInfo = {
     program: shaderProgram,
     attribLocations: {
@@ -38,51 +78,19 @@ function setup(v,f, canvas) {
       timeLocation: gl.getUniformLocation(shaderProgram, "u_time"),
     },
   };
-  //Initialise le buffer
+
   var positionBuffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
   gl.useProgram(shaderProgram);
-
-  startTime = Date.now();
-  draw(gl, programInfo);
-  setInterval(() => {
-    draw(gl, programInfo);    
-  }, 10);
+  return programInfo;
 }
 
-//
-// Initialize a shader program, so WebGL knows how to draw our data
-//
-function initShaderProgram(gl, vsSource, fsSource) {
-  var vertexShader = loadShader(gl, gl.VERTEX_SHADER, vsSource);
-  var fragmentShader = loadShader(gl, gl.FRAGMENT_SHADER, fsSource);
-
-  // Create the shader program
-  var shaderProgram = gl.createProgram();
-  gl.attachShader(shaderProgram, vertexShader);
-  gl.attachShader(shaderProgram, fragmentShader);
-  gl.linkProgram(shaderProgram);
-
-  // If creating the shader program failed, alert
-  if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
-    alert(
-      `Unable to initialize the shader program: ${gl.getProgramInfoLog(
-        shaderProgram
-      )}`
-    );
-    return null;
-  }
-  return shaderProgram;
-}
-
-function draw(gl, programInfo) {
-  elapsed = Date.now() - startTime;
+function drawGlCanvas(gl, programInfo) {
   resizeCanvasToDisplaySize(gl.canvas);
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
   gl.clearColor(0.0, 0.0, 0.0, 1.0);
   gl.clear(gl.COLOR_BUFFER_BIT);
   gl.enableVertexAttribArray(programInfo.attribLocations.vertexPosition);
-
   var x1 = 0;
   var x2 = gl.canvas.width;
   var y1 = 0;
@@ -130,10 +138,6 @@ function resizeCanvasToDisplaySize(canvas) {
   return needResize;
 }
 
-//
-// creates a shader of the given type, uploads the source and
-// compiles it.
-//
 function loadShader(gl, type, source) {
   var shader = gl.createShader(type);
 
