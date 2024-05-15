@@ -1,0 +1,39 @@
+body
+    margin: 0
+    padding: 0
+    background-color: black
+
+#chouettecanvas
+    width: 100%
+    height: 100%
+    position: fixed
+
+.sprite
+    margin: 0
+    width: 100vw
+    height: 100vh
+    position: fixed
+    background: transparent url("/assets/images/chouette.png") 0 0 no-repeat
+    opacity: 0.2
+    background-size: 100%
+
+.fade
+    opacity: 0
+    transition: opacity 2.3s ease
+
+.active
+    animation: envol 2.2s steps(14) forwards
+
+@keyframes envol
+   0%
+      background-position: 0% 0%
+      opacity: 0.3
+   30%
+      background-position: 0% 0%
+      opacity: 1
+   50%
+      background-position: 0% 0%
+      opacity: 1
+   100%
+      background-position: 0% 107.7%
+      opacity: 0.5
