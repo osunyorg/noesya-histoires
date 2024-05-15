@@ -17,13 +17,13 @@ canvas.height = window.innerHeight;
 // Positions en pourcentage par rapport à la taille actuelle du canvas
 const positions = [
     { x: 53, y: 18 },
-  /*  { x: 58, y: 35 },
+   { x: 58, y: 35 },
     { x: 47, y: 33 },
     { x: 59, y: 55 },
     { x: 52, y: 68 },
     { x: 45, y: 83 },
     { x: 40, y: 58 },
-    { x: 0, y: 0 } */
+    { x: 0, y: 0 } 
 ];
 
 //Créer limites de la constellation
