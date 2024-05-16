@@ -13,13 +13,14 @@ window.onload = function(e) {
   };
   
   if (menu) { 
-    var titres = document.querySelector('.menu-histoires').innerText; // TODO
-    var pagesURL = document.querySelectorAll('.menu-histoires');
-
+    var ul = menu.querySelector('.menu-histoires-liste'); // TODO
+    var liste = ul.querySelectorAll('li a');
+    
     var menucanvas = menu.querySelector("#chouettecanvas");
     if (menucanvas) {
       resizeCanvasToDisplaySize(menucanvas);
-      menu.constellation = new MenuCanvas(menucanvas);
+      // TODO: check que il y a bien liste
+      menu.constellation = new MenuCanvas(menucanvas, liste);
     }
 
     var glcanvas = menu.querySelector(".glcanvas");
@@ -73,7 +74,7 @@ window.addEventListener('click', function(event) { // TODO : detecter direecteme
     });
 });
 
-window.addEventListener('mousemove', function(event) { 
+window.addEventListener('mousemove', function(event) {  // gerer en CSS 
     var rect =  menu.constellation.canvas.getBoundingClientRect();
     var mouseX = event.clientX - rect.left;
     var mouseY = event.clientY - rect.top;
