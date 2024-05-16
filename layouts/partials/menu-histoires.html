@@ -12,6 +12,5 @@
     <div class="sprite"></div>
     <canvas id="chouettecanvas"></canvas>
 </div>
-
-<script src="/assets/js/menu-histoires.js" type="module" defer async></script>
-<script src="/assets/js/constellation.js" type="module" defer async></script>
+{{ $js := resources.Get "js/menu-histoires.js" | js.Build (dict "minify" hugo.IsProduction) | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
