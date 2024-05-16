@@ -20,6 +20,7 @@ window.onload = function(e) {
     if (menucanvas) {
       resizeCanvasToDisplaySize(menucanvas);
       // TODO: check que il y a bien liste
+      console.log("cohehef")
       menu.constellation = new MenuCanvas(menucanvas, liste);
     }
 
