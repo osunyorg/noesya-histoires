@@ -1,0 +1,43 @@
+#chouettecanvas
+    width: 100%
+    height: 100%
+    position: absolute
+    top: 0
+    left: 0
+
+.sprite
+    top: 0
+    left: 0
+    width: 100vw
+    aspect-ratio: 16/9
+    max-height: 100%
+    max-width: 100%
+    overflow: hidden
+    position: absolute
+    background: transparent url("/assets/images/chouette.png") 0 0 no-repeat
+    opacity: 0.2
+    background-size: cover
+    background-position: center 0%
+        
+        
+
+.fade
+    opacity: 0
+    transition: opacity 2.3s ease
+
+.active
+    animation: envol 2.2s steps(14) forwards
+
+@keyframes envol
+   0%
+      background-position: center 0%
+      opacity: 0.3
+   30%
+      background-position: center 0%
+      opacity: 1
+   50%
+      background-position: center 0%
+      opacity: 1
+   100%
+      background-position: center 107.7%
+      opacity: 0.5
