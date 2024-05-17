@@ -75,12 +75,18 @@ function Particle(container, pos) {
         
             var resteElement = document.createElement('div');
             resteElement.innerHTML = this.reste;
-            resteElement.classList.add("reste-class"); // Ajoute la classe pour le reste du texte
+            resteElement.classList.add("reste-class");
+            
+            var circleElement = document.createElement('div');
+            circleElement.classList.add("circle"); 
+            
         
             var a = document.createElement('a');
             a.setAttribute('href', this.url);
             a.appendChild(titleElement);
             a.appendChild(resteElement);
+            a.appendChild(circleElement);
+
         
             this.dom.appendChild(a);
             this.dom.style = "top: " + this.y + "px; left: " + this.x + "px; ";
