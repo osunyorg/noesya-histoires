@@ -8,7 +8,7 @@ var menu;
 window.onload = function(e) {
   menu = document.querySelector(".menu-histoires");
   var options = {
-    visual: false,
+    visual: true,
     sound: false
   };
   
