@@ -7,17 +7,11 @@
             height: 100%
             position: absolute
             width: 100%
-            .menu-histoires  
+            overflow: hidden
+            .menu-histoires
                 &-liste
                     margin: 0
                     padding: 0
-                &-link
-                    z-index: 900
-                    width: 100px
-                    height: 100px
-                    background: red
-                    position: absolute
-                    
                 .glcanvas
                     height: 100%
                     left: 0
@@ -25,27 +19,38 @@
                     top: 0
                     width: 100%
                     z-index: -1
-
-                #chouettecanvas
-                    width: 100%
-                    height: 100%
+                &-link
+                    z-index: 900
+                    width: 100px
+                    height: 100px
+                    background: red
                     position: absolute
-                    top: 0
-                    left: 0
 
-                .sprite
-                    top: 0
-                    left: 0
-                    width: 100vw
+                .menu-container
                     aspect-ratio: 16/9
-                    max-height: 100%
-                    max-width: 100%
-                    overflow: hidden
                     position: absolute
-                    background: transparent url("/assets/images/chouette.png") 0 0 no-repeat
-                    opacity: 0.2
-                    background-size: cover
-                    background-position: center 0%
+                    height: 100%
+                    top: 0
+                    left: calc(50% - calc(calc(100vh * 16/9) * 0.5))
+                    #chouettecanvas
+                        width: 100%
+                        height: 100%
+                        position: absolute
+                        top: 0
+                        left: 0
+                    .sprite
+                        top: 0
+                        left: 0
+                        // width: 100vw
+                        aspect-ratio: 16/9
+                        max-height: 100%
+                        max-width: 100%
+                        overflow: hidden
+                        // position: absolute
+                        background: transparent url("/assets/images/chouette.png") 0 0 no-repeat
+                        opacity: 0.2
+                        background-size: cover
+                        background-position: center 0%
                         
                 .fade
                     opacity: 0
