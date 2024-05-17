@@ -20,16 +20,75 @@
                     width: 100%
                     z-index: -1
                 &-link
+                    display: flex
+                    color: #fff
                     z-index: 900
-                    width: 100px
-                    height: 100px
-                    background: red
+                    width: 30px
+                    height: 30px
+                    border-radius: 50%
                     position: absolute
+                    background-color: #fff
+                    cursor: pointer
+                    overflow: visible
+                    text-decoration: none
+                    .title-class
+                        display: none
+                        //TODO : mieux importer 
+                        font-family: "Signifier", "Baskerville", "Times New Roman", "Times", serif
+                        font-style: italic
+                        font-size: $h1-size
+                        margin-left: 200px
+                    .reste-class
+                        display: none
+                        font-family: "Soehne", "Baskerville", "Times New Roman", "Times", serif
+                        margin-left: 200px
+                    &:hover
+                        .title-class, .reste-class
+                            display: flex
+                            color: #fff
+                            text-align: center
 
-                .menu-container
-                    aspect-ratio: 16/9
+                .glcanvas
+                    height: 100%
+                    left: 0
                     position: absolute
                     height: 100%
+                    top: 0
+                    width: 100%
+                    z-index: -1
+
+                &-link
+                    display: flex
+                    color: #fff
+                    z-index: 900
+                    width: 30px
+                    height: 30px
+                    border-radius: 50%
+                    position: absolute
+                    background-color: #fff
+                    cursor: pointer
+                    overflow: visible
+                    text-decoration: none
+                    .title-class
+                        display: none
+                        font-family: "Signifier", "Baskerville", "Times New Roman", "Times", serif
+                        font-style: italic
+                        font-size: $h1-size
+                        margin-left: 200px
+                    .reste-class
+                        display: none
+                        font-family: "Soehne", "Baskerville", "Times New Roman", "Times", serif
+                        margin-left: 200px
+                    &:hover
+                        .title-class, .reste-class
+                            display: flex
+                            color: #fff
+                            text-align: center
+                
+                .menu-container
+                    height: 100%
+                    aspect-ratio: 16/9
+                    position: absolute
                     top: 0
                     left: calc(50% - calc(calc(100vh * 16/9) * 0.5))
                     #chouettecanvas

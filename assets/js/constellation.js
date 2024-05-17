@@ -42,10 +42,6 @@ MenuCanvas.prototype.draw = function(){
         }
         
         this.ctx.stroke();
-        this.ctx.beginPath();
-        this.ctx.fillStyle = particle.isHovered ? '#FFD700' : '#FFF';
-        this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        this.ctx.fill();
     }
 }
 
@@ -57,6 +53,8 @@ function Particle(container, pos) {
     this.isHovered = false;
     this.x= canvas.width * (pos.x / 100);
     this.y= canvas.height * (pos.y / 100);
+    this.posX = pos.x;
+    this.posY = pos.y;
     this.connections =  pos.connected;
     this.link = pos.link;
     this.title = "";
@@ -64,26 +62,40 @@ function Particle(container, pos) {
     this.url = "";
 
     if(pos.link){
-        var t = pos.link.innerText.split(" ");
-        this.title =  t.shift();
-        this.reste = t.join(" ");
-        this.url = pos.link.href;
-        this.dom =  document.createElement('div'); // crée le container
-        this.dom.classList.add("menu-histoires-link");
-        var a = document.createElement('a');
-        a.innerHTML = this.title;
-        a.setAttribute('href', this.url);
-        this.dom.appendChild(a);
-        this.dom.style = "top: "+this.y+"px; left: "+this.x+"px; ";
-        container.append(this.dom);
+            var t = pos.link.innerText.split(" ");
+            this.title = t.shift();
+            this.reste = t.join(" ");
+            this.url = pos.link.href;
+            this.dom = document.createElement('div'); // crée le container
+            this.dom.classList.add("menu-histoires-link");
+        
+            var titleElement = document.createElement('div');
+            titleElement.innerHTML = this.title;
+            titleElement.classList.add("title-class"); // Ajoute la classe pour le titre
+        
+            var resteElement = document.createElement('div');
+            resteElement.innerHTML = this.reste;
+            resteElement.classList.add("reste-class"); // Ajoute la classe pour le reste du texte
+        
+            var a = document.createElement('a');
+            a.setAttribute('href', this.url);
+            a.appendChild(titleElement);
+            a.appendChild(resteElement);
+        
+            this.dom.appendChild(a);
+            this.dom.style = "top: " + this.y + "px; left: " + this.x + "px; ";
+            container.append(this.dom);
     }
 }
     
 Particle.prototype.update = function(particles, canvas) {
+    this.x= canvas.width * (this.posX / 100);
+    this.y= canvas.height * (this.posY / 100);
+
     this.x += this.directionX * 0.0002;
     this.y += this.directionY * 0.0002;
     if(this.dom){
-        this.dom.style = "top: "+this.y+"px; left: "+this.x+"px; ";
+        this.dom.style = "top: "+(this.y-15)+"px; left: "+(this.x-15)+"px; ";
     }
 
     //Créer limites de la constellation

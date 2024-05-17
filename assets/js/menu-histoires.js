@@ -46,7 +46,7 @@ function draw() {
     }
   } 
   if(menu.constellation){
-    //resizeCanvasToDisplaySize(menu.constellation.canvas);
+    resizeCanvasToDisplaySize(menu.constellation.canvas);
     menu.constellation.draw();
   }
   requestAnimationFrame(draw);
@@ -63,18 +63,25 @@ function resizeCanvasToDisplaySize(canvas) {
   return needResize;
 }
 
-// window.addEventListener('click', function(event) { // TODO : detecter direectement le clique sur la particule :)
-//     var rect = menu.constellation.canvas.getBoundingClientRect();
-//     var mouseX = event.clientX - rect.left;
-//     var mouseY = event.clientY - rect.top;
-//     menu.constellation.particleArray.forEach(particle => {
-//         var distance = Math.sqrt((particle.x - mouseX) ** 2 + (particle.y - mouseY) ** 2);
-//         if (distance < particle.size*5) {
-//             document.querySelector('.sprite').classList.add('active');
-//             document.querySelector('#chouettecanvas').classList.add('fade');
-//         }
-//     });
-// });
+window.addEventListener('click', function(event) { 
+  // TODO : detecter direectement le clique sur la particule :)
+  // on detecte pas la window mais la particule ( elementparticule . click )
+  // petit delay ( ) settimeout 
+  // ajout de la class áctive' au sprite bim bam
+
+  // window.location.href = '...';
+
+  var rect = menu.constellation.canvas.getBoundingClientRect();
+    var mouseX = event.clientX - rect.left;
+    var mouseY = event.clientY - rect.top;
+    menu.constellation.particleArray.forEach(particle => {
+        var distance = Math.sqrt((particle.x - mouseX) ** 2 + (particle.y - mouseY) ** 2);
+        if (distance < particle.size*5) {
+            document.querySelector('.sprite').classList.add('active');
+            document.querySelector('#chouettecanvas').classList.add('fade');
+        }
+    });
+});
 
 // window.addEventListener('mousemove', function(event) {  // gerer en CSS 
 //     var rect =  menu.constellation.canvas.getBoundingClientRect();
