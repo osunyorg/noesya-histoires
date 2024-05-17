@@ -12,17 +12,32 @@
                     margin: 0
                     padding: 0
                 &-link
+                    display: flex
+                    color: #fff
                     z-index: 900
-                    width: 100px
-                    height: 100px
+                    width: 30px
+                    height: 30px
+                    border-radius: 50%
                     position: absolute
                     background-color: #fff
+                    cursor: pointer
+                    overflow: visible
+                    text-decoration: none
                     .title-class
+                        display: none
                         font-family: "Signifier", "Baskerville", "Times New Roman", "Times", serif
                         font-style: italic
                         font-size: $h1-size
+                        margin-left: 200px
                     .reste-class
+                        display: none
                         font-family: "Soehne", "Baskerville", "Times New Roman", "Times", serif
+                        margin-left: 200px
+                    &:hover
+                        .title-class, .reste-class
+                            display: flex
+                            color: #fff
+                            text-align: center
                                
                     
                     

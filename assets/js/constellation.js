@@ -42,10 +42,6 @@ MenuCanvas.prototype.draw = function(){
         }
         
         this.ctx.stroke();
-        this.ctx.beginPath();
-        this.ctx.fillStyle = particle.isHovered ? '#FFD700' : '#FFF';
-        this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        this.ctx.fill();
     }
 }
 
@@ -94,7 +90,7 @@ Particle.prototype.update = function(particles, canvas) {
     //this.x += this.directionX * 0.0002;
     //this.y += this.directionY * 0.0002;
     if(this.dom){
-        this.dom.style = "top: "+this.y+"px; left: "+this.x+"px; ";
+        this.dom.style = "top: "+(this.y-15)+"px; left: "+(this.x-15)+"px; ";
     }
 
     //Créer limites de la constellation
