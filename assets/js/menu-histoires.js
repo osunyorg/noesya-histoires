@@ -8,30 +8,32 @@ var menu;
 window.onload = function(e) {
   menu = document.querySelector(".menu-histoires");
   var options = {
-    visual: true,
+    visual: false,
     sound: false
   };
   
-  if (menu) { 
-    var ul = menu.querySelector('.menu-histoires-liste'); // TODO
-    var liste = ul.querySelectorAll('li a');
-    
-    var menucontainer = menu.querySelector(".menu-container");
-    var menucanvas = menucontainer.querySelector("#chouettecanvas");
-    if (menucanvas) {
-      resizeCanvasToDisplaySize(menucanvas);
-      menucontainer.canvas = menucanvas;
-      // TODO: check que il y a bien liste
-      menu.constellation = new MenuCanvas(menucontainer, liste);
+  if(options.visual){
+    if (menu) { 
+      var ul = menu.querySelector('.menu-histoires-liste'); // TODO
+      var liste = ul.querySelectorAll('li a');
+      
+      var menucontainer = menu.querySelector(".menu-container");
+      var menucanvas = menucontainer.querySelector("#chouettecanvas");
+      if (menucanvas) {
+        resizeCanvasToDisplaySize(menucanvas);
+        menucontainer.canvas = menucanvas;
+        // TODO: check que il y a bien liste
+        menu.constellation = new MenuCanvas(menucontainer, liste);
+      }
+  
+      var glcanvas = menu.querySelector(".glcanvas");
+      if (glcanvas) {
+        resizeCanvasToDisplaySize(glcanvas);
+        menu.glCanvas = new GlCanvas(glcanvas);
+      }
+      startTime = Date.now();
+      draw();
     }
-
-    var glcanvas = menu.querySelector(".glcanvas");
-    if (glcanvas) {
-      resizeCanvasToDisplaySize(glcanvas);
-      menu.glCanvas = new GlCanvas(glcanvas);
-    }
-    startTime = Date.now();
-    draw();
   }
 }
 
@@ -44,7 +46,7 @@ function draw() {
     }
   } 
   if(menu.constellation){
-    resizeCanvasToDisplaySize(menu.constellation.canvas);
+    //resizeCanvasToDisplaySize(menu.constellation.canvas);
     menu.constellation.draw();
   }
   requestAnimationFrame(draw);
@@ -54,7 +56,6 @@ function resizeCanvasToDisplaySize(canvas) {
   var displayWidth  = canvas.clientWidth;
   var displayHeight = canvas.clientHeight;
   var needResize = canvas.width  !== displayWidth || canvas.height !== displayHeight;
-
   if (needResize) {
     canvas.width  = displayWidth;
     canvas.height = displayHeight;
@@ -62,29 +63,29 @@ function resizeCanvasToDisplaySize(canvas) {
   return needResize;
 }
 
-window.addEventListener('click', function(event) { // TODO : detecter direectement le clique sur la particule :)
-    var rect = menu.constellation.canvas.getBoundingClientRect();
-    var mouseX = event.clientX - rect.left;
-    var mouseY = event.clientY - rect.top;
-    menu.constellation.particleArray.forEach(particle => {
-        var distance = Math.sqrt((particle.x - mouseX) ** 2 + (particle.y - mouseY) ** 2);
-        if (distance < particle.size*5) {
-            document.querySelector('.sprite').classList.add('active');
-            document.querySelector('#chouettecanvas').classList.add('fade');
-        }
-    });
-});
+// window.addEventListener('click', function(event) { // TODO : detecter direectement le clique sur la particule :)
+//     var rect = menu.constellation.canvas.getBoundingClientRect();
+//     var mouseX = event.clientX - rect.left;
+//     var mouseY = event.clientY - rect.top;
+//     menu.constellation.particleArray.forEach(particle => {
+//         var distance = Math.sqrt((particle.x - mouseX) ** 2 + (particle.y - mouseY) ** 2);
+//         if (distance < particle.size*5) {
+//             document.querySelector('.sprite').classList.add('active');
+//             document.querySelector('#chouettecanvas').classList.add('fade');
+//         }
+//     });
+// });
 
-window.addEventListener('mousemove', function(event) {  // gerer en CSS 
-    var rect =  menu.constellation.canvas.getBoundingClientRect();
-    var mouseX = event.clientX - rect.left;
-    var mouseY = event.clientY - rect.top;
+// window.addEventListener('mousemove', function(event) {  // gerer en CSS 
+//     var rect =  menu.constellation.canvas.getBoundingClientRect();
+//     var mouseX = event.clientX - rect.left;
+//     var mouseY = event.clientY - rect.top;
 
-    menu.constellation.particleArray.forEach(particle => {
-        var distance = Math.sqrt((particle.x - mouseX) ** 2 + (particle.y - mouseY) ** 2);
-        particle.isHovered = distance < particle.size*5;
-    });
-});
+//     menu.constellation.particleArray.forEach(particle => {
+//         var distance = Math.sqrt((particle.x - mouseX) ** 2 + (particle.y - mouseY) ** 2);
+//         particle.isHovered = distance < particle.size*5;
+//     });
+// });
 
 // window.addEventListener("resize", () => {
 //     // Sauvegarder les anciennes dimensions pour le calcul des ratios

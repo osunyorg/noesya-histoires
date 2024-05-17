@@ -1,5 +1,6 @@
 <div class="menu-histoires">
     {{with .Params.children }}
+    <div class="container">
         <ul class="menu-histoires-liste">
             {{range .}}
                 {{with (site.GetPage (printf "%s" . ))}}
@@ -7,6 +8,7 @@
                 {{end}}
             {{end}}
         </ul>
+    </div>
     {{end}}
     <canvas class="glcanvas"></canvas>
     <div class="menu-container">
