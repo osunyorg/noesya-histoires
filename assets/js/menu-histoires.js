@@ -16,21 +16,19 @@ window.onload = function(e) {
     var ul = menu.querySelector('.menu-histoires-liste'); // TODO
     var liste = ul.querySelectorAll('li a');
     
-    var menucanvas = menu.querySelector("#chouettecanvas");
+    var menucontainer = menu.querySelector(".menu-container");
+    var menucanvas = menucontainer.querySelector("#chouettecanvas");
     if (menucanvas) {
       resizeCanvasToDisplaySize(menucanvas);
+      menucontainer.canvas = menucanvas;
       // TODO: check que il y a bien liste
-      console.log("cohehef")
-      menu.constellation = new MenuCanvas(menucanvas, liste);
+      menu.constellation = new MenuCanvas(menucontainer, liste);
     }
 
     var glcanvas = menu.querySelector(".glcanvas");
     if (glcanvas) {
       resizeCanvasToDisplaySize(glcanvas);
       menu.glCanvas = new GlCanvas(glcanvas);
-    }
-    else {
-      return;
     }
     startTime = Date.now();
     draw();
@@ -39,9 +37,11 @@ window.onload = function(e) {
 
 function draw() {
   elapsed = Date.now() - startTime;
-  if(menu.glCanvas.isReady){
-    resizeCanvasToDisplaySize(menu.glCanvas.canvas);
-    menu.glCanvas.draw(elapsed);
+  if(menu.glCanvas){
+    if(menu.glCanvas.isReady){
+      resizeCanvasToDisplaySize(menu.glCanvas.canvas);
+      menu.glCanvas.draw(elapsed);
+    }
   } 
   if(menu.constellation){
     resizeCanvasToDisplaySize(menu.constellation.canvas);

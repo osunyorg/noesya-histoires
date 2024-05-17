@@ -9,8 +9,10 @@
         </ul>
     {{end}}
     <canvas class="glcanvas"></canvas>
-    <div class="sprite"></div>
-    <canvas id="chouettecanvas"></canvas>
+    <div class="menu-container">
+        <div class="sprite"></div>
+        <canvas id="chouettecanvas"></canvas>
+    </div>
 </div>
 {{ $js := resources.Get "js/menu-histoires.js" | js.Build (dict "minify" hugo.IsProduction) | fingerprint }}
 <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>

@@ -1,5 +1,6 @@
-function MenuCanvas(canvas, liste) {
-    this.canvas = canvas;
+function MenuCanvas(container, liste) {
+    this.container = container;
+    this.canvas = container.canvas;
     var links = new Array(7);
     for(var i= 0; i<liste.length; i++){
         links[i] = liste[i];
@@ -14,14 +15,14 @@ function MenuCanvas(canvas, liste) {
         { x: 40, y: 58, connected: [6], link: links[5] },
         { x: 47, y: 33, connected: [0], link: links[6] }
     ];
-    this.ctx = canvas.getContext('2d');
+    this.ctx = this.canvas.getContext('2d');
     this.particleArray = [];
     this.init();
 }
 
 MenuCanvas.prototype.init = function(){
     for (var i = 0; i < this.particlesInfos.length; i++) {
-        this.particleArray.push(new Particle(this.canvas, this.particlesInfos[i]));
+        this.particleArray.push(new Particle(this.container, this.particlesInfos[i]));
     }
 }
 
@@ -41,7 +42,6 @@ MenuCanvas.prototype.draw = function(){
         }
         
         this.ctx.stroke();
-        
         this.ctx.beginPath();
         this.ctx.fillStyle = particle.isHovered ? '#FFD700' : '#FFF';
         this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
@@ -49,7 +49,8 @@ MenuCanvas.prototype.draw = function(){
     }
 }
 
-function Particle(canvas, pos) {
+function Particle(container, pos) {
+    var canvas = container.canvas;
     this.size = Math.random() * 10 + 10;
     this.directionX = Math.random();
     this.directionY = Math.random();
@@ -61,29 +62,29 @@ function Particle(canvas, pos) {
     this.title = "";
     this.reste = "";
     this.url = "";
+
     if(pos.link){
         var t = pos.link.innerText.split(" ");
         this.title =  t.shift();
         this.reste = t.join(" ");
         this.url = pos.link.href;
-        this.dom =  document.createElement('div');
-        var tt = document.createElement('a');
-        tt.innerHTML = this.title;
-        tt.setAttribute('href', this.url)
-        this.dom.appendChild(tt);
-        this.dom.style = "width: 100px; height: 100px; background: red; position:absolute; top: "+this.y+"px; left: "+this.x+"px; z-index:900;";
-        canvas.parentNode.append(this.dom);
+        this.dom =  document.createElement('div'); // crée le container
+        this.dom.classList.add("menu-histoires-link");
+        var a = document.createElement('a');
+        a.innerHTML = this.title;
+        a.setAttribute('href', this.url);
+        this.dom.appendChild(a);
+        this.dom.style = "top: "+this.y+"px; left: "+this.x+"px; ";
+        container.append(this.dom);
     }
 }
     
 Particle.prototype.update = function(particles, canvas) {
     this.x += this.directionX * 0.0002;
     this.y += this.directionY * 0.0002;
-    
     if(this.dom){
-        this.dom.style = "width: 100px; height: 100px; background: red; position:absolute; top: "+this.y+"px; left: "+this.x+"px; z-index:900;";
+        this.dom.style = "top: "+this.y+"px; left: "+this.x+"px; ";
     }
-
 
     //Créer limites de la constellation
     var centerX = canvas.width / 2;
