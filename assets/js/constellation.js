@@ -101,7 +101,7 @@ Particle.prototype.update = function(particles, canvas) {
     this.x += this.directionX * 0.0002;
     this.y += this.directionY * 0.0002;
     if(this.dom){
-        this.dom.style = "top: "+(this.y-15)+"px; left: "+(this.x-15)+"px; ";
+        this.dom.style = "top: "+(this.y-8)+"px; left: "+(this.x-8)+"px; ";
     }
 
     //Créer limites de la constellation
