@@ -37,8 +37,8 @@ MenuCanvas.prototype.draw = function(){
         this.ctx.lineWidth = 2;
         this.ctx.strokeStyle = "#fff";
         for(var j=0; j< particle.connections.length; j++){
-            this.ctx.moveTo(this.particleArray[particle.connections[j]].x, this.particleArray[particle.connections[j]].y);
-            this.ctx.lineTo(particle.x, particle.y);
+            this.ctx.moveTo(this.particleArray[particle.connections[j]].x / 100 * this.canvas.width, this.particleArray[particle.connections[j]].y  / 100 * this.canvas.height);
+            this.ctx.lineTo(particle.x  / 100 * this.canvas.width, particle.y  / 100 * this.canvas.height);
         }
         
         this.ctx.stroke();
@@ -46,90 +46,49 @@ MenuCanvas.prototype.draw = function(){
 }
 
 function Particle(container, pos) {
-    var canvas = container.canvas;
-    this.size = Math.random() * 10 + 10;
-    this.directionX = Math.random();
-    this.directionY = Math.random();
-    this.isHovered = false;
-    this.x= canvas.width * (pos.x / 100);
-    this.y= canvas.height * (pos.y / 100);
     this.posX = pos.x;
     this.posY = pos.y;
+    this.direction = Math.random()*Math.PI*2; // random entre 0 et 2 PI
+    this.x = this.posX;
+    this.y = this.posY;
     this.connections =  pos.connected;
-    this.link = pos.link;
-    this.title = "";
-    this.reste = "";
-    this.url = "";
 
     if(pos.link){
-            var t = pos.link.innerText.split(" ");
-            this.title = t.shift();
-            this.reste = t.join(" ");
-            this.url = pos.link.href;
-            this.dom = document.createElement('div'); // crée le container
-            this.dom.classList.add("menu-histoires-link");
+        var t = pos.link.innerText.split(" ");
+        this.dom = document.createElement('div'); // crée le container
+        this.dom.classList.add("menu-histoires-link");
+    
+        var titleElement = document.createElement('div');
+        titleElement.innerHTML = t.shift();
+        titleElement.classList.add("title-class"); // Ajoute la classe pour le titre
+    
+        var resteElement = document.createElement('div');
+        resteElement.innerHTML = t.join(" ");
+        resteElement.classList.add("reste-class");
         
-            var titleElement = document.createElement('div');
-            titleElement.innerHTML = this.title;
-            titleElement.classList.add("title-class"); // Ajoute la classe pour le titre
-        
-            var resteElement = document.createElement('div');
-            resteElement.innerHTML = this.reste;
-            resteElement.classList.add("reste-class");
-            
-            var circleElement = document.createElement('div');
-            circleElement.classList.add("circle"); 
-            
-        
-            var a = document.createElement('a');
-            a.setAttribute('href', this.url);
-            a.appendChild(titleElement);
-            a.appendChild(resteElement);
-            a.appendChild(circleElement);
-
-        
-            this.dom.appendChild(a);
-            this.dom.style = "top: " + this.y + "px; left: " + this.x + "px; ";
-            container.append(this.dom);
+        var circleElement = document.createElement('div');
+        circleElement.classList.add("circle"); 
+        var a = document.createElement('a');
+        a.setAttribute('href', pos.link.href);
+        a.appendChild(titleElement);
+        a.appendChild(resteElement);
+        a.appendChild(circleElement);
+        this.dom.appendChild(a);
+        this.dom.style = "top: " + this.y + "px; left: " + this.x + "px; ";
+        container.append(this.dom);
     }
 }
     
 Particle.prototype.update = function(particles, canvas) {
-    this.x= canvas.width * (this.posX / 100);
-    this.y= canvas.height * (this.posY / 100);
-
-    this.x += this.directionX * 0.0002;
-    this.y += this.directionY * 0.0002;
+    var r = 0.01; // Rayon de deplaceemnt en % du canvas
+    var dTc = Math.floor(Math.sqrt(Math.abs(Math.pow(this.x - this.posX, 2) - Math.pow(this.y - this.posY, 2))));
+    if(dTc >= r){
+        this.direction += (Math.PI/3); // TODO ameliorer les nouvelles direcitons je trouve pas ca ouf ( qqc comme tangeante à l'intersection du cercle)
+    }
+    this.x += Math.cos(this.direction)*0.01; // multiplication par la vitesse
+    this.y += Math.sin(this.direction)*0.01;
     if(this.dom){
-        this.dom.style = "top: "+(this.y-8)+"px; left: "+(this.x-8)+"px; ";
-    }
-
-    //Créer limites de la constellation
-    var centerX = canvas.width / 2;
-    var centerY = canvas.height / 2;
-    var halfDiagonalX = Math.min(canvas.width, canvas.height) / 12;
-    var halfDiagonalY = Math.min(canvas.width, canvas.height) / 6;
-
-    //reste dans les limites
-    var influence = ((Math.abs(this.x - centerX) / halfDiagonalX) + (Math.abs(this.y - centerY) / halfDiagonalY)) - 1;
-    if (influence > 0) {
-        this.directionX -= (influence * (this.x - centerX) / halfDiagonalX );
-        this.directionY -= (influence * (this.y - centerY) / halfDiagonalY );
-    }
-    
-    //Les particules se repoussent les unes les autres
-    for(var i = 0; i < particles.length; i++){
-        var particle = particles[i];
-        if (particle !== this) {
-            var dx = particle.x - this.x;
-            var dy = particle.y - this.y;
-            var distance = Math.sqrt(dx * dx + dy * dy);
-            if (distance < 300) {
-                var repulsion = 1;
-                this.directionX -= (dx * repulsion)/50;
-                this.directionY -= (dy * repulsion)/50;
-            }
-        }
+        this.dom.style = "top: "+(this.y)+"%; left: "+(this.x)+"%;"; // TODO Calcul width height pour l'offset
     }
 }
 export default MenuCanvas;

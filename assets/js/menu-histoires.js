@@ -41,12 +41,10 @@ function draw() {
   elapsed = Date.now() - startTime;
   if(menu.glCanvas){
     if(menu.glCanvas.isReady){
-      resizeCanvasToDisplaySize(menu.glCanvas.canvas);
       menu.glCanvas.draw(elapsed);
     }
   } 
   if(menu.constellation){
-    resizeCanvasToDisplaySize(menu.constellation.canvas);
     menu.constellation.draw();
   }
   requestAnimationFrame(draw);
@@ -55,12 +53,8 @@ function draw() {
 function resizeCanvasToDisplaySize(canvas) {
   var displayWidth  = canvas.clientWidth;
   var displayHeight = canvas.clientHeight;
-  var needResize = canvas.width  !== displayWidth || canvas.height !== displayHeight;
-  if (needResize) {
-    canvas.width  = displayWidth;
-    canvas.height = displayHeight;
-  }
-  return needResize;
+  canvas.width  = displayWidth;
+  canvas.height = displayHeight;
 }
 
 window.addEventListener('click', function(event) { 
@@ -94,23 +88,7 @@ window.addEventListener('click', function(event) {
 //     });
 // });
 
-// window.addEventListener("resize", () => {
-//     // Sauvegarder les anciennes dimensions pour le calcul des ratios
-//     var oldWidth = canvas.width;
-//     var oldHeight = canvas.height;
-
-//     // Mise à jour des dimensions du canvas
-//     canvas.width = window.innerWidth;
-//     canvas.height = window.innerHeight;
-
-//     // Calculer les nouveaux paramètres de positionnement
-//     var newCenterX = canvas.width / 2;
-//     var newCenterY = canvas.height / 2;
-//     var scaleWidth = canvas.width / oldWidth;
-//     var scaleHeight = canvas.height / oldHeight;
-
-//     ParticleArray.forEach((particle, index) => {
-//         particle.x = canvas.width * (positions[index].x / 100);
-//         particle.y = canvas.height * (positions[index].y / 100);
-//     });
-// });
+window.addEventListener("resize", () => {
+  resizeCanvasToDisplaySize(menu.glCanvas.canvas);
+  resizeCanvasToDisplaySize(menu.constellation.canvas);
+});
