@@ -69,24 +69,28 @@ function Particle(container, pos) {
         var circleElement = document.createElement('div');
         circleElement.classList.add("circle"); 
         var a = document.createElement('a');
-        a.setAttribute('href', pos.link.href);
+        a.classList.add('menu-link'); 
+        var url = pos.link;
+        a.setAttribute('href', url);
         a.appendChild(titleElement);
         a.appendChild(resteElement);
         a.appendChild(circleElement);
         this.dom.appendChild(a);
         this.dom.style = "top: " + this.y + "px; left: " + this.x + "px; ";
         container.append(this.dom);
+
+
     }
 }
     
 Particle.prototype.update = function(particles, canvas) {
     var r = 0.01; // Rayon de deplaceemnt en % du canvas
-    var dTc = Math.floor(Math.sqrt(Math.abs(Math.pow(this.x - this.posX, 2) - Math.pow(this.y - this.posY, 2))));
+    var dTc = Math.floor(Math.sqrt(Math.abs(Math.pow(this.x - this.posX, 2) + Math.pow(this.y - this.posY, 2)))); //Additionner les carrés pour distance euclidienne ?
     if(dTc >= r){
-        this.direction += (Math.PI/3); // TODO ameliorer les nouvelles direcitons je trouve pas ca ouf ( qqc comme tangeante à l'intersection du cercle)
+        this.direction += (Math.random() - 0.5) * (Math.PI/3); // TODO ameliorer les nouvelles direcitons je trouve pas ca ouf ( qqc comme tangeante à l'intersection du cercle)
     }
-    this.x += Math.cos(this.direction)*0.01; // multiplication par la vitesse
-    this.y += Math.sin(this.direction)*0.01;
+    this.x += Math.cos(this.direction)*0.005; // multiplication par la vitesse
+    this.y += Math.sin(this.direction)*0.005;
     if(this.dom){
         this.dom.style = "top: "+(this.y)+"%; left: "+(this.x)+"%;"; // TODO Calcul width height pour l'offset
     }
