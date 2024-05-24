@@ -1,4 +1,4 @@
-.page-menu-histoires
+.page-menu-histoires 
     main
         padding: 0
         .hero
@@ -24,8 +24,7 @@
                     z-index: 900
                     overflow: visible
                     position: absolute
-                    .circle 
-                        cursor: pointer
+                    .circle
                         top: 0
                         width: 3vh
                         height: 3vh
@@ -51,9 +50,11 @@
                         
                     &:hover
                         .title-class, .reste-class
+                            cursor: url("/assets/images/cursor-hover.png"), auto
                             color: #fff
                             opacity: 1
                         .circle
+                            cursor: url("/assets/images/cursor-hover.png"), auto 
                             animation: shrink 4s infinite
 
                     @keyframes shrink
@@ -82,12 +83,10 @@
                     .sprite
                         top: 0
                         left: 0
-                        // width: 100vw
                         aspect-ratio: 16/9
                         max-height: 100%
                         max-width: 100%
                         overflow: hidden
-                        // position: absolute
                         background: transparent url("/assets/images/chouette.png") 0 0 no-repeat
                         opacity: 0.2
                         background-size: cover
