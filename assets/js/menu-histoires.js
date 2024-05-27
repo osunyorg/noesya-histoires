@@ -40,7 +40,6 @@ window.onload = function(e) {
    var circles = document.querySelectorAll('.menu-histoires-link');
     for (var i = 0; i < circles.length; i++) {
    circles[i].addEventListener('click', function(event) { 
-  console.log('clic !');
   event.preventDefault();
   var linkElement = this.querySelector('.menu-link');
   console.log(linkElement);
