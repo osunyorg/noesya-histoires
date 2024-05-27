@@ -44,7 +44,6 @@ window.onload = function(e) {
   var linkElement = this.querySelector('.menu-link');
   console.log(linkElement);
       var url = linkElement.href;
-    console.log(url);
     document.querySelector('.sprite').classList.add('active');
     document.querySelector('#chouettecanvas').classList.add('fade');
     for (var i = 0; i<circles.length; i++){
