@@ -42,7 +42,6 @@ window.onload = function(e) {
    circles[i].addEventListener('click', function(event) { 
   event.preventDefault();
   var linkElement = this.querySelector('.menu-link');
-  console.log(linkElement);
       var url = linkElement.getAttribute('value');
     document.querySelector('.sprite').classList.add('active');
     document.querySelector('#chouettecanvas').classList.add('fade');
