@@ -70,8 +70,7 @@ function Particle(container, pos) {
         circleElement.classList.add("circle"); 
         var a = document.createElement('a');
         a.classList.add('menu-link'); 
-        var url = pos.link;
-        a.setAttribute('href', url);
+        a.setAttribute('value', pos.link.href);
         a.appendChild(titleElement);
         a.appendChild(resteElement);
         a.appendChild(circleElement);
