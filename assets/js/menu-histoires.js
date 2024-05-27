@@ -43,7 +43,7 @@ window.onload = function(e) {
   event.preventDefault();
   var linkElement = this.querySelector('.menu-link');
   console.log(linkElement);
-      var url = linkElement.href;
+      var url = linkElement.getAttribute('value');
     document.querySelector('.sprite').classList.add('active');
     document.querySelector('#chouettecanvas').classList.add('fade');
     for (var i = 0; i<circles.length; i++){
