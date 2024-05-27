@@ -1,6 +1,7 @@
 import './vendors/lightbox';
 import './vendors/carousel';
 import './theme/';
+import './lecture';
 
 
 // devrait etre dans le theme noesya non ?
