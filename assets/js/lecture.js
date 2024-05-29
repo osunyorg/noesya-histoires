@@ -3,20 +3,19 @@ var sizes = {
     height: window.innerHeight
 }
 
-window.addEventListener('resize', () =>
+window.addEventListener('resize', function() 
 {
 sizes.width = window.innerWidth;
 sizes.height = window.innerHeight;
-})
+});
 
 var chapitres = document.querySelectorAll('.block');
 console.log(chapitres);
 
-var scrollY = window.scrollY
-window.addEventListener('scroll', () =>
+var scrollY = window.scrollY;
+window.addEventListener('scroll', function()
 {
     scrollY = window.scrollY;
-    
     var section = Math.round(scrollY / sizes.height)-1;
     var currentChapitre = (chapitres[section]);
     var previousChapitre = (chapitres[section-1]);
@@ -30,5 +29,4 @@ window.addEventListener('scroll', () =>
     if(nextChapitre){
     nextChapitre.classList.remove('apparition');
     }
-
-})
+});
