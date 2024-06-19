@@ -1,7 +1,10 @@
 {{ define "main" }}
+
+  {{ partial "story-filters.html" . }}
   {{ partial "pages/hero.html" . }}
   {{ partial "hooks/after-page-hero.html" . }}
-  <div class="document-content">
+
+  <div class="document-content story">
     {{if eq .Params.bodyclass "page-menu-histoires" }}
       {{ partial "menu-histoires.html" . }}
     {{else}}
@@ -22,4 +25,6 @@
       {{ end }}
     {{end}}
   </div>
+
+  {{/*  Ici ajouter l'audio et afficher un player si la checkbox audio est cochée */}}
 {{ end }}
