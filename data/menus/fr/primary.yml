@@ -5,4 +5,5 @@ items:
   target: "/7-petites-histoires-de-noesya/"
   kind: page
   children: []
+  file: content/fr/pages/7-petites-histoires-de-noesya/_index.html
 
