@@ -1,4 +1,5 @@
 import './theme/';
+import './filters';
 
 
 // devrait etre dans le theme noesya non ?
