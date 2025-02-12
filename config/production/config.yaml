@@ -2,6 +2,11 @@
 
 baseURL: https://histoires.noesya.osuny.site
 
+## OSUNY
+osuny:
+  website:
+    id: 6c1b2741-34dc-43c7-9b66-fdb04d37c26b
+
 ## LANGUAGE
 defaultContentLanguage: fr
 defaultContentLanguageInSubdir: false
