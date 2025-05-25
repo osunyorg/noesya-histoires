@@ -1,11 +1,9 @@
 theme: noesya-hugo-theme
-paginate: 18
-enableRobotsTXT: true
-removePathAccents: true
+_merge: deep
 params:
   logo:
     header: "/assets/images/logo-noesya.svg"
   summary:
     position: hero
   search:
-    active: false  
+    active: false
