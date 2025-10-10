@@ -1,12 +1,17 @@
-@include media-breakpoint-up(desktop)
-    .hero
+.hero
+    @include media-breakpoint-up(desktop)
         min-height: auto
-    .blocks
-        .block-pages
-            &--alternate
-                .page
-                    margin-bottom: $spacing-5
-                    .page-title
-                        text-align: center
-                    .more
-                        display: none
+        &--with-image
+            .content
+                flex-direction: column-reverse
+                align-items: center
+                text-align: center
+.blocks
+    .block-pages
+        &--alternate
+            .page
+                margin-bottom: $spacing-5
+                .page-title
+                    text-align: center
+                .more
+                    display: none
