@@ -1,13 +1,13 @@
 ---
 title: Menu principal
 items:
-- title: Edmund & le nom de la chose
-  target: "/edmund-et-le-nom-de-la-chose/"
+- title: Edmund & le nom de la pensée
+  target: "/edmund-et-le-nom-de-la-pensee/"
   kind: page
   new_tab: false
   children: []
-  path: "/pages/edmund-et-le-nom-de-la-chose"
-  file: content/fr/pages/edmund-et-le-nom-de-la-chose/_index.html
+  path: "/pages/edmund-et-le-nom-de-la-pensee"
+  file: content/fr/pages/edmund-et-le-nom-de-la-pensee/_index.html
 - title: John & la chouette venue du froid
   target: "/john-et-la-chouette-venue-du-froid/"
   kind: page
