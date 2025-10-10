@@ -1,11 +1,14 @@
 .hero
     @include media-breakpoint-up(desktop)
         min-height: auto
+        .content
+            text-align: center
+            .hero-text
+                width: 100%
         &--with-image
             .content
-                flex-direction: column-reverse
                 align-items: center
-                text-align: center
+                flex-direction: column-reverse
 .blocks
     .block-pages
         &--alternate
