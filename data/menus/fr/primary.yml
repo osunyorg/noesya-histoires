@@ -22,7 +22,7 @@ items:
   children: []
   path: "/pages/sarah-les-glyphes-du-temps"
   file: content/fr/pages/sarah-les-glyphes-du-temps/_index.html
-- title: Violenn & la suisse bretonne
+- title: Violenn & la Suisse bretonne
   target: "/violenn/"
   kind: page
   new_tab: false
