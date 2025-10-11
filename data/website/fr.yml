@@ -1,6 +1,6 @@
 default:
 contents_reading_time:
-  seconds: 3
+  seconds: 1
   text: >-
     moins d'une minute
 contents:
@@ -23,7 +23,7 @@ contents:
         Six histoires & un piano
 
       transcription: >-
-        <p>Enregistrement en public à la maison noesya</p>
+        
 
 
 
