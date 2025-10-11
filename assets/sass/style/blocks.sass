@@ -1,0 +1,31 @@
+.blocks
+    .block
+        @include media-breakpoint-up(desktop)
+            margin-top: space(64)
+            margin-bottom: space(64)
+    .block-pages
+        &--alternate
+            .page
+                margin-bottom: $spacing-6
+                .page-title
+                    text-align: center
+                .more
+                    display: none
+    .block-chapter
+        &--accent_background
+            .block-content
+                color: $color-text
+                .chapter
+                    background: none
+                    .text
+                        text-align: center
+                        padding: 0
+                        font-size: pxToRem(26)
+                        line-height: 160%
+                        margin-bottom: 0
+                        p
+                            &::after
+                                content: "§"
+                                display: block
+                                margin-top: $spacing-4
+                                margin-bottom: $spacing-4

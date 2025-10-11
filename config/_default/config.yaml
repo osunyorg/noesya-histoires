@@ -1,4 +1,6 @@
-theme: noesya-hugo-theme
+theme: 
+  - noesya-hugo-theme
+  - osuny-plugin-centered-layout
 _merge: deep
 params:
   home:
