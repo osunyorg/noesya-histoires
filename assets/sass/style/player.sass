@@ -1,0 +1,28 @@
+.footer-contents
+    .block-sound
+        background: white
+        border-radius: 30px
+        bottom: $grid-gutter
+        left: $grid-gutter
+        margin: 0
+        right: $grid-gutter
+        position: fixed
+        z-index: 1000
+        .container
+            margin: 0
+            padding: $spacing-1
+            width: 100%
+            @include media-breakpoint-up(desktop)
+                padding: 0
+            figure
+                line-height: 100%
+                figcaption
+                    text-align: center
+                    p
+                        @include meta
+                @include media-breakpoint-up(desktop)
+                    display: flex
+                    flex-direction: row
+                    align-items: center
+                    figcaption
+                        width: pxToRem(400)
