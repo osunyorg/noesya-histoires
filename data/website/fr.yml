@@ -1,7 +1,30 @@
 default:
 contents_reading_time:
-  seconds: 0
+  seconds: 3
   text: >-
     moins d'une minute
 contents:
+  - kind: block
+    template: sound
+    title: >-
+      
+    slug: >-
+      
+    ranks:
+      base: 2
+    top:
+      active: false
+    data:
+      file:
+        id: "d1dc8656-a5f5-4fb1-a1d7-959485af9680"
+        file: "d1dc8656-a5f5-4fb1-a1d7-959485af9680"
+
+      title: >-
+        Six histoires & un piano
+
+      transcription: >-
+        <p>Enregistrement en public à la maison noesya</p>
+
+
+
 
