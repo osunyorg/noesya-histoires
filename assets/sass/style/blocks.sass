@@ -13,16 +13,17 @@
                     display: none
     .block-chapter
         &--accent_background
+            background: var(--color-background)
             .block-content
                 color: var(--color-text)
                 .chapter
-                    background: var(--color-background)
+                    background: none
                     .text
                         text-align: center
                         padding: 0
                         font-size: pxToRem(20)
-												@include media-breakpoint-up(desktop)
-													font-size: pxToRem(26)
+                        @include media-breakpoint-up(desktop)
+                            font-size: pxToRem(26)
                         line-height: 160%
                         margin-bottom: 0
                         p
