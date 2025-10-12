@@ -3,6 +3,7 @@ theme:
   - osuny-plugin-centered-layout
 _merge: deep
 params:
+  additional_csp: 'unpkg.com'
   home:
     head:
       title: site
