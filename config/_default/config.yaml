@@ -7,3 +7,14 @@ params:
   home:
     head:
       title: site
+  image_sizes:
+    sections:
+      pages:
+        hero:
+          mobile: 400
+          tablet: 800
+          desktop: 300
+        item:
+          mobile: 420
+          tablet: 800
+          desktop: 420
