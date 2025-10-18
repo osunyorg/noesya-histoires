@@ -1,23 +1,32 @@
 .footer-contents
     .block-sound
         background: white
-        border-radius: 4px
-        bottom: $grid-gutter
-        left: $grid-gutter
+        bottom: 0
+        left: 0
         margin: 0
-        right: $grid-gutter
         position: fixed
+        right: 0
         z-index: 70
+        @include media-breakpoint-up(desktop)
+            border-radius: 4px
+            bottom: $grid-gutter
+            left: 50%
+            margin-left: -400px
+            width: 800px
         .container
             margin: 0
-            padding: $spacing-1
+            padding: 0
             width: 100%
-            @include media-breakpoint-up(desktop)
-                padding: 0
             figure
                 line-height: 100%
+                flex-direction: row-reverse !important
+                audio
+                    &::-webkit-media-controls-panel
+                        background-color: white
                 figcaption
                     text-align: center
+                    @include media-breakpoint-down(desktop)
+                        padding-bottom: $spacing-2
                     p
                         @include meta
                         color: black
@@ -26,4 +35,9 @@
                     flex-direction: row
                     align-items: center
                     figcaption
-                        width: pxToRem(400)
+                        text-wrap: nowrap
+                        padding-left: $spacing-3
+                        padding-right: $spacing-3
+footer#document-footer
+    @include media-breakpoint-down(desktop)
+        padding-bottom: $spacing-6
