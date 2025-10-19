@@ -15,8 +15,12 @@
             width: 800px
         .container
             margin: 0
-            padding: 0
+            padding-left: $grid-gutter
+            padding-right: $grid-gutter
             width: 100%
+            @include media-breakpoint-down(desktop)
+                padding-bottom: $spacing-1
+                padding-top: $spacing-1
             figure
                 line-height: 100%
                 flex-direction: row-reverse !important
@@ -25,8 +29,6 @@
                         background-color: white
                 figcaption
                     text-align: center
-                    @include media-breakpoint-down(desktop)
-                        padding-bottom: $spacing-2
                     p
                         @include meta
                         color: black
