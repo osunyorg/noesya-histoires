@@ -7,3 +7,6 @@
 [submodule "themes/osuny-plugin-centered-layout"]
 	path = themes/osuny-plugin-centered-layout
 	url = git@github.com:osunyorg/osuny-plugin-centered-layout.git
+[submodule "themes/osuny-plugin-single-page-application"]
+	path = themes/osuny-plugin-single-page-application
+	url = git@github.com:osunyorg/osuny-plugin-single-page-application.git

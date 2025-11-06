@@ -1,4 +1,4 @@
 import './theme/';
 import './design-system/footer';
 import './design-system/menu';
-import './transition';
+import './osuny-plugin-single-page-application/main';

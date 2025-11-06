@@ -1,6 +1,7 @@
 theme: 
   - noesya-hugo-theme
   - osuny-plugin-centered-layout
+  - osuny-plugin-single-page-application
 _merge: deep
 params:
   additional_csp: 'unpkg.com'
