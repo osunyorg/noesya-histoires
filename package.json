@@ -5,9 +5,8 @@
   "author": "osunyorg",
   "license": "MIT",
   "dependencies": {
-    "@swup/body-class-plugin": "^3.3.0",
     "osuny": "./themes/osuny",
-    "swup": "^4.8.2"
+    "osuny-plugin-single-page-application": "./themes/osuny-plugin-single-page-application"
   },
   "scripts": {
     "osuny": "npx osuny-hugo-theme"
