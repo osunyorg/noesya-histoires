@@ -1,0 +1,33 @@
+.page__home
+    .blocks
+        .block-chapter:first-of-type
+            .block-content
+                .chapter
+                    .text
+                        text-align: center
+                        padding: 0
+                        font-size: pxToRem(20)
+                        @include media-breakpoint-up(desktop)
+                            font-size: pxToRem(26)
+                        line-height: 160%
+                        margin-bottom: 0
+                        p
+                            &::after
+                                content: "↓"
+                                -webkit-animation: MoveUpDown 10s linear infinite
+
+@keyframes MoveUpDown
+    0%
+        opacity: 0
+        transform: translateY(-20px)
+    5%
+        opacity: 1
+        transform: translateY(0)
+    70%
+        transform: translateY(0)
+        opacity: 1
+    90%
+        opacity: 0
+        transform: translateY(40px)
+    100%
+        opacity: 0
