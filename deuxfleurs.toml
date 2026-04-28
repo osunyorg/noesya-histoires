@@ -14,3 +14,43 @@ for = ["**/*.png", "**/*.jpg", "**/*.jpeg", "**/*.gif", "**/*.webp"]
 [headers.values]
 Cache-Control = "max-age=31536000, no-transform, public"
 
+[[redirects]]
+from = "/projets/index.html"
+to = "/histoires/"
+
+[[redirects]]
+from = "/les-coulisses-du-concert/index.html"
+to = "/en-coulisses/"
+
+[[redirects]]
+from = "/7-petites-histoires-de-noesya/edmund-et-le-nom-de-la-chose/index.html"
+to = "/edmund-et-le-nom-de-la-pensee/"
+
+[[redirects]]
+from = "/equipe-editoriale/index.html"
+to = "/equipe/equipe-editoriale/"
+
+[[redirects]]
+from = "/7-petites-histoires-de-noesya/john-et-la-chouette-venue-du-froid/index.html"
+to = "/john-et-la-chouette-venue-du-froid/"
+
+[[redirects]]
+from = "/edmund-et-le-nom-de-la-chose/index.html"
+to = "/edmund-et-le-nom-de-la-pensee/"
+
+[[redirects]]
+from = "/7-petites-histoires-de-noesya/philippe-lodeur-de-lencre/index.html"
+to = "/philippe-lodeur-de-lencre/"
+
+[[redirects]]
+from = "/7-petites-histoires-de-noesya/violenn/index.html"
+to = "/violenn/"
+
+[[redirects]]
+from = "/7-petites-histoires-de-noesya/lou-ann-lappareil-lunaire/index.html"
+to = "/lou-ann-lappareil-lunaire/"
+
+[[redirects]]
+from = "/7-petites-histoires-de-noesya/sarah-les-glyphes-du-temps/index.html"
+to = "/sarah-les-glyphes-du-temps/"
+
