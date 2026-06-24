@@ -5,6 +5,8 @@ theme:
 _merge: deep
 params:
   additional_csp: 'unpkg.com'
+  debug:
+    productionUrl: https://histoires.noesya.coop
   home:
     head:
       title: site
