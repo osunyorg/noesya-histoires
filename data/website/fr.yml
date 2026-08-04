@@ -4,5 +4,21 @@ contents_reading_time:
   text: >-
     moins d'une minute
 contents:
+  - kind: block
+    template: sound
+
+
+    ranks:
+      base: 2
+    top:
+      active: false
+
+    data:
+      file:
+        id: "12be9b9e-f696-4f1c-ab93-878d5650f512"
+      title: >-
+        Six histoires & un piano
+
+
 
 
