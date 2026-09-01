@@ -19,6 +19,10 @@ from = "/projets/index.html"
 to = "/histoires/"
 
 [[redirects]]
+from = "/fichiers/2026/index.html"
+to = "/fichiers/2026/20213007-recherches-noesyapdf/"
+
+[[redirects]]
 from = "/les-coulisses-du-concert/index.html"
 to = "/en-coulisses/"
 
